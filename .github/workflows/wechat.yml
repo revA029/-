@@ -2,8 +2,8 @@ name: WeChat Reminder
 
 on:
   schedule:
-    - cron: '0 1 * * *'   # 北京时间 9点
-    - cron: '0 10 * * *'  # 北京时间 18点
+    - cron: '55 0 * * *'   # 北京时间 08:55
+    - cron: '55 9 * * *'   # 北京时间 17:55
   workflow_dispatch:
 
 jobs:
