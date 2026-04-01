@@ -1,0 +1,24 @@
+name: WeChat Reminder
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 每天北京时间 9点（UTC+8）
+    - cron: '0 10 * * *'   # 每天北京时间 18点（UTC+8）
+  workflow_dispatch:
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send WeChat Message
+        run: |
+          curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=7fcad4df-7206-48f9-8318-afae72cf5722' \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "msgtype": "text",
+            "text": {
+              "content": "各位同事，和作社打卡时间到了，别忘记打卡哦～
+@所有人  "
+            }
+          }'
